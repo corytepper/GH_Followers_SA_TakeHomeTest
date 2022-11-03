@@ -15,8 +15,10 @@ class FollowerListVC: UIViewController {
     
     var username: String!
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
     var page = 1
     var hasMoreFollowers = true
+    var isSearching = false
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -27,6 +29,7 @@ class FollowerListVC: UIViewController {
         configureCollectionView()
         getFollowers(username: username, page: page)
         configureDataSource()
+        configureSearchController()
     }
     
     
@@ -49,6 +52,17 @@ class FollowerListVC: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
+    func configureSearchController() {
+        let searchController                                        = UISearchController()
+        searchController.searchResultsUpdater                       = self
+        searchController.searchBar.delegate                         = self
+        searchController.searchBar.placeholder                      = "Search for a username"
+        searchController.obscuresBackgroundDuringPresentation       = false
+        navigationItem.searchController                             = searchController
+        
+    }
+    
+    
     
     func getFollowers(username: String, page: Int) {
         showLoadingView()
@@ -70,7 +84,7 @@ class FollowerListVC: UIViewController {
                     }
                     
                 }
-                self.updateData()
+                self.updateData(on: self.followers)
                 
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
@@ -88,7 +102,7 @@ class FollowerListVC: UIViewController {
     }
     
     
-    func updateData() {
+    func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section,Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -101,9 +115,9 @@ class FollowerListVC: UIViewController {
 extension FollowerListVC: UICollectionViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let offsetY             = scrollView.contentOffset.y
-        let contentHeight       = scrollView.contentSize.height
-        let height              = scrollView.frame.size.height
+        let offsetY         = scrollView.contentOffset.y
+        let contentHeight   = scrollView.contentSize.height
+        let height          = scrollView.frame.size.height
         
         
         if offsetY > contentHeight - height {
@@ -112,4 +126,32 @@ extension FollowerListVC: UICollectionViewDelegate {
             getFollowers(username: username, page: page)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let activeArray     = isSearching ? filteredFollowers : followers
+        let follower        = activeArray[indexPath.item]
+        
+        let destVC          = UserInfoVC()
+        destVC.username     = follower.login
+        let navController   = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
+    }
+}
+
+
+
+extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        isSearching = true
+        filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased())}
+        updateData(on: filteredFollowers)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        updateData(on: followers)
+        
+    }
+    
 }
