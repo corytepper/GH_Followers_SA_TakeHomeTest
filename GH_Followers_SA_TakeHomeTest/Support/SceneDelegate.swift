@@ -52,6 +52,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func configureNaviagtionBar() {
+        if #available(iOS 15, *) {
+                   UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
+               }
         UINavigationBar.appearance().tintColor = .systemGreen
     }
 
