@@ -1,8 +1,8 @@
 //
-//  ErrorMessage.swift
+//  GFError.swift
 //  GH_Followers_SA_TakeHomeTest
 //
-//  Created by Cory Tepper on 10/1/22.
+//  Created by Cory Tepper on 11/3/22.
 //
 
 import Foundation
