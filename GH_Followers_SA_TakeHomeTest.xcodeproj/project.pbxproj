@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FED57A42917DE1000E59556 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FED57A32917DE1000E59556 /* GFItemInfoView.swift */; };
+		2FED57A62917E7B100E59556 /* GFItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FED57A52917E7B100E59556 /* GFItemInfoVC.swift */; };
 		EE0A9782291274050031B202 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0A9781291274050031B202 /* FollowerCell.swift */; };
 		EE0A97842912757F0031B202 /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0A97832912757F0031B202 /* GFAvatarImageView.swift */; };
 		EE0A97862912BB860031B202 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0A97852912BB860031B202 /* UIHelper.swift */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		2FED57A32917DE1000E59556 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
+		2FED57A52917E7B100E59556 /* GFItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoVC.swift; sourceTree = "<group>"; };
 		EE0A9781291274050031B202 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		EE0A97832912757F0031B202 /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
 		EE0A97852912BB860031B202 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				EE0F82B328B8423400F5F308 /* GFAlertVC.swift */,
 				EE0A9793291525020031B202 /* GFUserInfoHeaderVC.swift */,
+				2FED57A52917E7B100E59556 /* GFItemInfoVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				EE46F8D128B3CFB800FABD5B /* GFButton.swift in Sources */,
 				EE6AC7D428DDE2C80044B72F /* UIViewController+Ext.swift in Sources */,
 				EE0A97862912BB860031B202 /* UIHelper.swift in Sources */,
+				2FED57A62917E7B100E59556 /* GFItemInfoVC.swift in Sources */,
 				EE0A9798291562270031B202 /* Constants.swift in Sources */,
 				EE0A97842912757F0031B202 /* GFAvatarImageView.swift in Sources */,
 				EE46F8CD28B2C37C00FABD5B /* SearchVC.swift in Sources */,
