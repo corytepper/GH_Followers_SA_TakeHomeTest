@@ -20,7 +20,7 @@ class UserInfoVC: GFDataLoadingVC {
     let itemViewOne         = UIView()
     let itemViewTwo         = UIView()
     let dateLabel           = GFBodyLabel(textAlignment: .center)
-    var itemViews: [UIView]  = []
+    var itemViews: [UIView] = []
     
     var username: String!
     weak var delegate: UserInfoVCDelegate!
@@ -41,6 +41,7 @@ class UserInfoVC: GFDataLoadingVC {
         navigationItem.rightBarButtonItem = doneButton
     }
     
+    
     func configureScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -52,6 +53,7 @@ class UserInfoVC: GFDataLoadingVC {
             contentView.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
+    
     
     func getUserInfo() {
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
@@ -67,6 +69,7 @@ class UserInfoVC: GFDataLoadingVC {
             }
         }
     }
+    
     
     func configureUIElements(with user: User) {
         self.add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
@@ -84,6 +87,7 @@ class UserInfoVC: GFDataLoadingVC {
         
         for itemView in itemViews {
             contentView.addSubview(itemView)
+            
             itemView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
@@ -91,7 +95,6 @@ class UserInfoVC: GFDataLoadingVC {
                 itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
             ])
         }
-        
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -129,7 +132,6 @@ extension UserInfoVC: GFRepoItemVCDelegate {
             presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid", buttonTitle: "Ok")
             return
         }
-
         presentSafariVC(with: url)
     }
 }

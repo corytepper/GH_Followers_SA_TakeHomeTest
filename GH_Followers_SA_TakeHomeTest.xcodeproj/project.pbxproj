@@ -247,9 +247,9 @@
 				EE6AC7DE28E5B7950044B72F /* Managers */,
 				EE1B903C28B29137006CCD25 /* Info.plist */,
 				EE6AC7D928E47A890044B72F /* Model */,
-				EE6AC7D828E207590044B72F /* Support */,
 				EE6AC7D728E207100044B72F /* Extensions */,
 				EE6AC7D628E206D10044B72F /* Custom Views */,
+				EE6AC7D828E207590044B72F /* Support */,
 				EE6AC7D528E206950044B72F /* Screens */,
 			);
 			path = GH_Followers_SA_TakeHomeTest;

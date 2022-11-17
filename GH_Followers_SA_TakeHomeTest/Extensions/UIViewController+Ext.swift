@@ -8,8 +8,6 @@
 import UIKit
 import SafariServices
 
-fileprivate var containerView: UIView!
-
 extension UIViewController {
     
     func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
