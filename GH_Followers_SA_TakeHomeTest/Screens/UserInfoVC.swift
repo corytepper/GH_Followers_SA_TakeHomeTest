@@ -11,7 +11,6 @@ protocol UserInfoVCDelegate: AnyObject {
     func didTapGitHubProfile(for user: User)
     func didTapGetFollowers(for user: User)
 }
-
 class UserInfoVC: GFDataLoadingVC {
     
     let headerView          = UIView()

@@ -18,9 +18,9 @@ extension UIViewController {
             alertVC.modalPresentationStyle = .overFullScreen
             alertVC.modalTransitionStyle = .crossDissolve
             self.present(alertVC, animated: true)
-            
         }
     }
+    
     
     func presentSafariVC(with url: URL) {
         let safariVC = SFSafariViewController(url: url)
