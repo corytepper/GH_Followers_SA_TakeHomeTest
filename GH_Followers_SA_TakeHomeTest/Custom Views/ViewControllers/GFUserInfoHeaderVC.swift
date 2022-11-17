@@ -48,6 +48,7 @@ class GFUserInfoHeaderVC: UIViewController {
         locationImageView.tintColor     = .secondaryLabel
     }
     
+    
     func downloadAvatarImage() {
         NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
             guard let self = self else { return }
@@ -57,14 +58,9 @@ class GFUserInfoHeaderVC: UIViewController {
     
     
     func addSubviews() {
-        view.addSubview(avatarImageView)
-        view.addSubview(usernameLabel)
-        view.addSubview(nameLabel)
-        view.addSubview(locationImageView)
-        view.addSubview(locationLabel)
-        view.addSubview(bioLabel)
-        
+        view.addSubviews(avatarImageView,usernameLabel,nameLabel,locationImageView,locationLabel,bioLabel)
     }
+    
     
     func layoutUI() {
         let padding: CGFloat            = 20
@@ -100,7 +96,7 @@ class GFUserInfoHeaderVC: UIViewController {
             bioLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: textImagePadding),
             bioLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bioLabel.heightAnchor.constraint(equalToConstant: 60)
+            bioLabel.heightAnchor.constraint(equalToConstant: 90)
         ])
         
     }
