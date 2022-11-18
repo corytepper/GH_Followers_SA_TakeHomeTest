@@ -13,8 +13,7 @@ class SearchVC: UIViewController {
     let usernameTextField  = GFTextField()
     let callToActionButton = GFButton(color: .systemGreen, title: "Get Followers", systemImageName: "person.3")
     
-    var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty
-    }
+    var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty }
     
     
     override func viewDidLoad() {
@@ -41,13 +40,14 @@ class SearchVC: UIViewController {
     
     
     @objc func pushFollowerListVC() {
-        guard isUsernameEntered else { 
-            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😎.", buttonTitle: "Ok")
-            return }
+        guard isUsernameEntered else {
+            presentGFAlert(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😎.", buttonTitle: "Ok")
+            return
+        }
         
         usernameTextField.resignFirstResponder()
         
-        let followerListVC      = FollowerListVC(username: usernameTextField.text!)
+        let followerListVC = FollowerListVC(username: usernameTextField.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
@@ -96,7 +96,6 @@ class SearchVC: UIViewController {
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
-        print("Did Tap Return")
         return true
     }
 }

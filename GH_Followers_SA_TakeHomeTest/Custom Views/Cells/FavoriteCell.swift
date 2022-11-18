@@ -25,6 +25,12 @@ class FavoriteCell: UITableViewCell {
     }
     
     
+    override func prepareForReuse() {
+            super.prepareForReuse()
+            avatarImageView.image = Images.placeholder
+        }
+    
+    
     func set(favorite: Follower) {
         usernameLabel.text = favorite.login
         avatarImageView.downloadImage(fromURL: favorite.avatarUrl)
